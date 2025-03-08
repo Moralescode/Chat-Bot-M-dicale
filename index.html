@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" id="authContainer">
+        <!-- Contenu dynamique généré par JavaScript -->
+    </div>
+
+
+    <!-- 
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const authContainer = document.getElementById("authContainer");
+                let isLogin = true;
+        
+                function renderForm() {
+                    authContainer.innerHTML = isLogin ? `
+                        <h2>Connexion</h2>
+                        <form id="loginForm">
+                            <input type="text" id="loginUsername" placeholder="Nom d'utilisateur" required>
+                            <input type="password" id="loginPassword" placeholder="Mot de passe" required>
+                            <button type="submit">Se connecter</button>
+                        </form>
+                        <p class="dessous">Pas encore de compte ? <a id="toggleForm">Inscrivez-vous</a></p>
+                    ` : `
+                        <h2>Inscription</h2>
+                        <form id="registerForm">
+                            <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                            <input type="password" id="password" placeholder="Mot de passe" required>
+                            <button type="submit">S'inscrire</button>
+                        </form>
+                        <p class="dessous">Déjà un compte ? <a id="toggleForm">Connectez-vous</a></p>
+                    `;
+                    attachEventListeners();
+                }
+        
+                function attachEventListeners() {
+                    document.getElementById("toggleForm").addEventListener("click", function() {
+                        isLogin = !isLogin;
+                        renderForm();
+                    });
+        
+                    if (!isLogin) {
+                        document.getElementById("registerForm").addEventListener("submit", function(e) {
+                            e.preventDefault();
+                            const formData = new FormData(this);
+        
+                            fetch("register.php", {
+                                method: "POST",
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === "success") {
+                                    alert("Inscription réussie ! Connectez-vous maintenant.");
+                                    isLogin = true;
+                                    renderForm();
+                                } else {
+                                    alert(data.message);
+                                }
+                            });
+                        });
+                    } else {
+                        document.getElementById("loginForm").addEventListener("submit", function(e) {
+                            e.preventDefault();
+                            const formData = new FormData(this);
+        
+                            fetch("login.php", {
+                                method: "POST",
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === "success") {
+                                    alert("Connexion réussie !");
+                                    window.location.href = data.redirect;
+                                } else {
+                                    alert(data.message);
+                                }
+                            });
+                        });
+                    }
+                }
+        
+                renderForm();
+            });
+        </script>
+     -->
+
+
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const authContainer = document.getElementById("authContainer");
+            let isLogin = true; // État initial : formulaire de connexion
+
+            function renderForm() {
+                // Génère dynamiquement le formulaire en fonction de l'état actuel (login ou register)
+                authContainer.innerHTML = isLogin ? `
+                    <h2>Connexion</h2>
+                    <form id="loginForm">
+                        <input type="text" id="loginUsername" placeholder="Nom d'utilisateur" required>
+                        <input type="password" id="loginPassword" placeholder="Mot de passe" required>
+                        <button type="submit">Se connecter</button>
+                    </form>
+                    <p class="dessous">Pas encore de compte ? <a id="toggleForm">Inscrivez-vous</a></p>
+
+                ` : `
+
+                    <h2>Inscription</h2>
+                    <form id="registerForm">
+                        <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                        <input type="password" id="password" placeholder="Mot de passe" required>
+                        <button type="submit">S'inscrire</button>
+                    </form>
+                    <p class="dessous">Déjà un compte ? <a id="toggleForm">Connectez-vous</a></p>
+                `;
+                attachEventListeners(); // Attache les événements après le rendu
+            }
+
+            function attachEventListeners() {
+                // Permet de basculer entre login et register
+                document.getElementById("toggleForm").addEventListener("click", function() {
+                    isLogin = !isLogin;
+                    renderForm();
+                });
+
+                if (!isLogin) {
+                    // Gestion de l'inscription
+                    document.getElementById("registerForm").addEventListener("submit", function(e) {
+                        e.preventDefault();
+                        const username = document.getElementById("username").value;
+                        const password = document.getElementById("password").value;
+                        
+                        // Stockage des informations de l'utilisateur en localStorage
+                        localStorage.setItem("user", JSON.stringify({ username, password }));
+                        alert("Inscription réussie ! Connectez-vous maintenant.");
+                        isLogin = true; // Passe à la page de connexion après inscription
+                        renderForm();
+                    });
+                } else {
+                    // Gestion de la connexion
+                    document.getElementById("loginForm").addEventListener("submit", function(e) {
+                        e.preventDefault();
+                        const loginUsername = document.getElementById("loginUsername").value;
+                        const loginPassword = document.getElementById("loginPassword").value;
+                        
+                        const storedUser = JSON.parse(localStorage.getItem("user"));
+
+                        // Vérification des identifiants
+                        if (storedUser && storedUser.username === loginUsername && storedUser.password === loginPassword) {
+                            alert("Connexion réussie !");
+                            window.location.href = "redirect/index.html"; // Redirection vers le chatbot
+                        } else {
+                            alert("Identifiants incorrects");
+                        }
+                    });
+                }
+            }
+            
+            renderForm(); // Affiche le formulaire initial
+        });
+    </script> 
+
+
+
+</body>
+</html>

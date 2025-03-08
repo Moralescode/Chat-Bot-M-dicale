@@ -1,0 +1,87 @@
+/*Importation Google Font - Poppins */
+@import url(https://fonts.googleapis.com/css?family=Inter:);
+
+*{
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-color: #24c6ee;
+    --secondary-color: #c8c7ff;
+    --text-color: #ffffff;
+    --heading-color: #212121;
+    --border-radius: 5px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: linear-gradient(#0792b4, #0d0ab7);
+    background-color: #f4f4f4;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+p{
+    align-items: center;
+    margin: 30px;
+}
+
+
+
+
+
+
+
+/* Conteneur principal */
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: auto !important;
+    height: auto;
+  }
+  
+        
+   /* Champs de saisie */
+   input {
+       width: 100%;
+       padding: 10px;
+       margin: 10px 0;
+       border: 1px solid #ccc;
+       border-radius: 5px;
+   }
+  
+         
+   /* Bouton de soumission */
+   button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+        
+  
+   /* Effet au survol du bouton */
+  button:hover {
+       background: #218838;
+  }
+        
+  
+  /* Lien de basculement entre login et register */
+  a {
+      text-decoration: none;
+      color: #007bff;
+      cursor: pointer;
+  }

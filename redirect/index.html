@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot Médical - Assistance</title>
+  <!-- Lien vers le fichier CSS pour les styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- En-tête de la page avec une section de couverture -->
+  <header class="cover-section">
+    <div class="cover-background">
+      <!-- Image de fond de la couverture -->
+      <img src="../images/imgB.png" class="logo" alt="Cover image">
+    </div>
+
+    <div class="cover-content">
+      <!-- Titre principal du site -->
+      <h1>Assistant Médical IA</h1>
+      <!-- Slogan ou description courte -->
+      <p>Décrivez vos symptômes, nous vous aiderons !</p>
+    </div>
+  </header>
+
+  <!-- Section de description du site -->
+  <div class="site-description">
+    <p>Bienvenue, je permets de vous sensibiliser et de vous éduquer sur <b>le paludisme</b>.</p>
+    <p>Le paludisme reste la principale cause de mortalité infantile en Côte d'Ivoire et constitue le premier motif de consultations médicales et d'hospitalisations.<br/> En 2024, le pays a introduit le vaccin antipaludique R21, visant à immuniser environ 250 000 enfants âgés de 0 à 23 mois dans 16 régions.</p>
+  </div>
+
+  <!-- Conteneur pour les messages du chatbot -->
+  <div class="chats-container"></div>
+
+  <!-- Formulaire pour envoyer des messages au chatbot -->
+  <div class="prompt-container">
+    <form id="prompt-form" class="prompt-form">
+      <!-- Champ de saisie pour la question de l'utilisateur -->
+      <input type="text" id="prompt-input" placeholder="Décrivez vos symptômes..." required>
+      <!-- Bouton pour envoyer la question -->
+      <button id="send-prompt-btn" type="submit">Envoyer</button>
+    </form>
+  </div>
+
+  <!-- Pied de page avec les informations de copyright -->
+  <footer>
+    <p>© 2026 Chatbot Médical. Informations basées sur MedlinePlus.</p>
+  </footer>
+
+  <!-- Lien vers le fichier JavaScript pour les fonctionnalités -->
+  <script src="scripts.js"></script>
+</body>
+</html>
