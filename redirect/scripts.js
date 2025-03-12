@@ -64,17 +64,7 @@
       // Affiche la réponse limitée dans le conteneur de chat
       displayMessage(fullBotResponse, "bot-message");
       
-      // Si la réponse contient des chiffres (indiquant des statistiques), ajoute une image illustrative
-      if (/\d/.test(fullBotResponse)) {
-        let img = document.createElement("img");
-        img.src = "https://images.unsplash.com";
-        img.alt = "Illustration statistique";
-        img.style.maxWidth = "100%";
-        img.style.display = "block";
-        img.style.margin = "10px auto";
-        chatsContainer.appendChild(img);
-        chatsContainer.scrollTop = chatsContainer.scrollHeight;
-      }
+
     })
     .catch(error => {
       console.error("Erreur lors de la requête API :", error);
