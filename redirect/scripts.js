@@ -8,6 +8,16 @@
   const promptForm = document.getElementById("prompt-form");         /* Formulaire de saisie*/
   const promptInput = document.getElementById("prompt-input");         /* Champ de saisie utilisateur*/
   const chatsContainer = document.querySelector(".chats-container");   /* Conteneur des messages du chat*/
+
+
+  // Fonction pour limiter la réponse à 60 mots
+  function truncateWords(text, maxWords) {
+    let words = text.split(/\s+/); // Sépare la réponse en mots
+    if (words.length > maxWords) {
+      return words.slice(0, maxWords).join(" ") + " [...]"; // Tronque après 60 mots
+    }
+    return text;
+  }
   
   // Écouteur d'événement sur le formulaire pour intercepter l'envoi
   promptForm.addEventListener("submit", function (event) {
