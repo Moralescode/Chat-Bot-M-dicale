@@ -23,7 +23,7 @@ promptForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Empêche l'envoi classique du formulaire
   
   // Récupère et nettoie le texte saisi par l'utilisateur
-  const userText = promptInput.value.trim();
+  const userText = promptInput.value.trim(); 
   if (userText === "") return; // Ne rien faire si le champ est vide
   
   // Affiche le message de l'utilisateur dans le conteneur de chat
