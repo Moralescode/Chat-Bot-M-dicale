@@ -34,7 +34,7 @@
     displayMessage(userText, "user-message");
     
     // Construit un prompt composite pour limiter la réponse au paludisme en Côte d'Ivoire
-    const compositePrompt = `Tu es un chatbot expert en sensibilisation et éducation sur le paludisme en Côte d'Ivoire. Réponds exclusivement sur ce sujet. Voici la question de l'utilisateur : ${userText}`;
+    const compositePrompt = `Tu es un chatbot expert en sensibilisation et éducation sur le paludisme en Côte d'Ivoire t'appuyant sur les rapports de l'OMS. Réponds exclusivement sur ce sujet. Voici la question de l'utilisateur : ${userText}`;
     
     // Prépare les données à envoyer à l'API Gemini sous forme d'objet JSON
     const requestData = {
