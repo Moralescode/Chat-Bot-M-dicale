@@ -9,11 +9,11 @@ const promptForm = document.getElementById("prompt-form");         /* Formulaire
 const promptInput = document.getElementById("prompt-input");         /* Champ de saisie utilisateur */
 const chatsContainer = document.querySelector(".chats-container");   /* Conteneur des messages du chat */
 
-// Fonction pour limiter la réponse à 120 mots
+// Fonction pour limiter la réponse à 150 mots
 function truncateWords(text, maxWords) {
   let words = text.split(/\s+/); // Sépare la réponse en mots
   if (words.length > maxWords) {
-    return words.slice(0, maxWords).join(" ") + " [...]"; // Tronque après 120 mots
+    return words.slice(0, maxWords).join(" ") + " [...]"; // Tronque après 150 mots
   }
   return text;
 }
@@ -55,8 +55,8 @@ promptForm.addEventListener("submit", function (event) {
   .then(data => {
     // Récupère la réponse complète du bot
     let fullBotResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "Désolé, je n'ai pas pu traiter votre demande.";
-    // Tronque la réponse à 120 mots
-    fullBotResponse = truncateWords(fullBotResponse, 120);
+    // Tronque la réponse à 150 mots
+    fullBotResponse = truncateWords(fullBotResponse, 150);
     // Affiche la réponse tronquée dans le conteneur de chat
     displayMessage(fullBotResponse, "bot-message");
   })
